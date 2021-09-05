@@ -116,6 +116,24 @@ nav {
     color: #777;
 }
 
+.information-app {
+    height: 100vh;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    justify-content: center;
+    align-items: center;
+}
+.accounts {
+    display: grid;
+    gap: 3rem;
+}
+
+.accounts div {
+    border-bottom: 1px solid #888;
+}
+
 /* MAIN */
 .app {
     position: relative;

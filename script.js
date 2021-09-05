@@ -100,6 +100,9 @@ const accounts = [account1, account2, account3, account4];
 const labelWelcome = document.querySelector('.welcome');
 const labelDate = document.querySelector('.date');
 const labelBalance = document.querySelector('.balance__value');
+
+const informationApp = document.querySelector('.information-app');
+
 const labelSumIn = document.querySelector('.summary__value--in');
 const labelSumOut = document.querySelector('.summary__value--out');
 const labelSumInterest = document.querySelector('.summary__value--interest');
@@ -242,10 +245,11 @@ const startLogOutTimer = function () {
             clearInterval(timer);
             containerApp.style.opacity = 0;
             labelWelcome.textContent = `Log in to get started`;
+            informationApp.style.display = 'flex';
             cuteAlert({
                 type: 'success',
                 title: 'Log out',
-                message: 'Your account has been disconnected',
+                message: 'Your account has been disconnected due to inactivity',
                 buttonText: 'Okay',
             });
         }
@@ -298,6 +302,7 @@ btnLogin.addEventListener('click', function (e) {
 
         // Update UI
         updateUI(currentAccount);
+        informationApp.style.display = 'none';
     } else {
         cuteAlert({
             type: 'error',
@@ -459,6 +464,8 @@ btnClose.addEventListener('click', function (e) {
                 containerApp.style.opacity = 0;
                 // Reset Timer
                 clearInterval(timer);
+                informationApp.style.display = 'flex';
+
                 cuteAlert({
                     type: 'success',
                     title: 'Close account',
