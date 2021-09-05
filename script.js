@@ -273,6 +273,13 @@ btnLogin.addEventListener('click', function (e) {
     currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
 
     if (currentAccount?.pin === +inputLoginPin.value) {
+        cuteAlert({
+            type: 'success',
+            title: 'Log in success',
+            message: `Welcome back, ${currentAccount.owner.split(' ')[0]}`,
+            buttonText: 'Okay',
+        });
+
         // Display UI and message
         labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`;
         containerApp.style.opacity = 1;
@@ -294,7 +301,7 @@ btnLogin.addEventListener('click', function (e) {
     } else {
         cuteAlert({
             type: 'error',
-            title: 'Error',
+            title: 'Log in error',
             message: 'User or Password do not match',
             buttonText: 'Okay',
         });
