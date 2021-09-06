@@ -102,6 +102,7 @@ const labelDate = document.querySelector('.date');
 const labelBalance = document.querySelector('.balance__value');
 
 const informationApp = document.querySelector('.information-app');
+const informationAppAccounts = document.querySelector('.information-app__accounts');
 
 const labelSumIn = document.querySelector('.summary__value--in');
 const labelSumOut = document.querySelector('.summary__value--out');
@@ -245,6 +246,7 @@ const startLogOutTimer = function () {
             clearInterval(timer);
             containerApp.style.opacity = 0;
             labelWelcome.textContent = `Log in to get started`;
+            accountAvailable(accounts);
             informationApp.style.display = 'flex';
             cuteAlert({
                 type: 'success',
@@ -464,6 +466,7 @@ btnClose.addEventListener('click', function (e) {
                 containerApp.style.opacity = 0;
                 // Reset Timer
                 clearInterval(timer);
+                accountAvailable(accounts);
                 informationApp.style.display = 'flex';
 
                 cuteAlert({
@@ -501,6 +504,31 @@ btnSort.addEventListener('click', function (e) {
     currentAccount.sortMov = currentAccount.sortMov === true ? false : true;
     displayMovements(currentAccount);
 });
+
+// informationAppAccounts
+const accountAvailable = function (accounts) {
+    informationAppAccounts.innerHTML = '';
+    if (accounts.length > 0) {
+        accounts.forEach(({ username, pin }, index) => {
+            // console.log(account);
+            const html = `
+        <div class="accounts__account--${++index}">
+        <p class="user-account">
+          User: ${username}
+        </p>
+        <p class="password-account">
+          Pin: ${pin}
+        </p>
+      </div>`;
+            informationAppAccounts.insertAdjacentHTML('beforeend', html);
+        });
+    } else {
+        const html = `
+        <p> You have <b>REMOVED</b> all app accounts, refresh the web page to restart </p>`;
+        informationAppAccounts.insertAdjacentHTML('beforeend', html);
+    }
+};
+accountAvailable(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
