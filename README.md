@@ -1,5 +1,5 @@
 # Bankist
 
-Click link below
+Click the link below
 
-[bankist app](https://bankist-diego.netlify.app)
+[Bankist App](https://bankist-diego.netlify.app)
